@@ -1,0 +1,40 @@
+{
+ "document": "Quiet Ascent V2 -- public terms of the record",
+ "protocol": "V2",
+ "purpose": "What can be verified WITHOUT any disclosure of the calculation rules. The claim supported here is about selection, not about the strategy.",
+ "relation_to_v1": {
+  "shared_data": "V1 and V2 are built from ONE vendor pull and ONE set of panels each month. Both repositories commit the identical attestations/attestation_YYYY-MM.json; the same body_sha256 appearing in both manifests is the proof.",
+  "cross_link": "Every V2 manifest records the V1 public repository HEAD and V1's ledger chain value for the same month in lineage.v1_cross_link.",
+  "separate_chain": "V2 has its own seed, anchor, ledger and key chain. The two chains are not interchangeable; a key from one opens nothing in the other.",
+  "account": "The account that executed the V1 record through 2026-08 converted to the V2 book at the 2026-09-30 close. V1's record continues on paper from 2026-09; its manifests say so."
+ },
+ "roster": {
+  "count": 1,
+  "fixed": "The roster is fixed at one row. A change to the set is a roster change and is logged with a date and reason.",
+  "rows": [
+   {"id": "unrestricted.fully_invested", "role": "traded", "execution_basis": "T MOC; legs below two whole shares as dollar-based orders in the final minutes"}
+  ],
+  "licensed_tiers": "The core and high-capacity tiers are published in the V2 documents whose fingerprints sit in every manifest's lineage.documents_sha256; they are not sealed rows."
+ },
+ "cadence": {
+  "frequency": "monthly",
+  "book_fixed_at": "the stamp session, one or more sessions BEFORE the month end; recorded per manifest as stamp_date",
+  "traded_at": "the month-end session, market-on-close"
+ },
+ "disclosure": {
+  "sealed": "Every committed book is sealed (AES-256-GCM) and its ciphertext is published with the manifest, so the book is fixed and handed over before its outcome is known.",
+  "anchor": "K_0 is published in commit_anchor.json, so any released key authenticates itself by hashing forward to it.",
+  "monotonic": "Keys form a reverse hash chain: releasing month m's key discloses month m and every earlier month, and cannot disclose a later one.",
+  "rule": "The key for month m is released when month m+19 is committed.",
+  "release_with_commitment_of": 19
+ },
+ "what_a_reader_can_check_today": [
+  "the chain: each manifest's prev_manifest_sha256 and chain value against the previous manifest",
+  "the timestamp: the .ots proof for each manifest",
+  "the register: truncate PRE_REGISTRATION.md to lineage.pre_registration_v2.bytes and hash it",
+  "the data: the attestation's body_sha256 against the same file in the V1 repository",
+  "the envelope: sealed_sha256 against the published .seal.json bytes"
+ ],
+ "what_requires_disclosure": "the book itself: released keys open the sealed rows, and the plaintext hashes to book_sha256",
+ "not_in_this_file": "Universe definition, feature set, screen clauses, exit gates, sizing model parameters and ladder depth are deliberately absent. Nothing here reveals more than a published manifest already does."
+}
