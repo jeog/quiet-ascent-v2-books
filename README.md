@@ -28,10 +28,13 @@ so the sequence cannot be rewritten.
 
 ## What is committed, and when
 
-One row: the traded book, `unrestricted.fully_invested`. It is committed every month, run or not;
-a month that failed is still committed with `status: not-run` and a stated reason. The licensed
-tiers are published in the V2 documents, whose fingerprints are in every manifest's
-`lineage.documents_sha256`. Each manifest also carries the hashes of the configuration, the engine
+Through 2026-09, one row: the traded book, `unrestricted.fully_invested`. From 2026-10, twelve rows,
+the V1 shape: the unrestricted, core and capacity books, each under the four treatments, with the
+traded row unchanged (`public_terms.json`, `roster.roster_changes`, dated 2026-09-30). A row is
+committed every month, run or not; a month that failed is still committed with `status: not-run`
+and a stated reason. The licensed tiers are published in the V2 documents, whose fingerprints are
+in every manifest's `lineage.documents_sha256`; for 2026-09 their books are pinned indirectly through
+the attested inputs and the engine hash in the lineage, and from 2026-10 they are sealed rows. Each manifest also carries the hashes of the configuration, the engine
 and the builders the month's book came from, and the append-only register's hash and byte length.
 
 ## Sealed books: the anchor and the key chain

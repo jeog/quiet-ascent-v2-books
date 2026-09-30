@@ -10,11 +10,24 @@
  },
  "roster": {
   "count": 1,
-  "fixed": "The roster is fixed at one row. A change to the set is a roster change and is logged with a date and reason.",
+  "fixed": "The roster is fixed. A change to the set is a roster change and is logged here, in roster_changes, and in the next manifest's roster_changes, with a date and reason. Through 2026-09 the roster is one row, the traded book. From 2026-10 it is twelve rows, the V1 shape: three books by four treatments (roster_changes[0]).",
   "rows": [
-   {"id": "unrestricted.fully_invested", "role": "traded", "execution_basis": "T MOC; legs below two whole shares as dollar-based orders in the final minutes"}
+   {
+    "id": "unrestricted.fully_invested",
+    "role": "traded",
+    "execution_basis": "T MOC; legs below two whole shares as dollar-based orders in the final minutes"
+   }
   ],
-  "licensed_tiers": "The core and high-capacity tiers are published in the V2 documents whose fingerprints sit in every manifest's lineage.documents_sha256; they are not sealed rows."
+  "licensed_tiers": "The core and high-capacity tiers are published in the V2 documents whose fingerprints sit in every manifest's lineage.documents_sha256. For 2026-09 they are not sealed rows: that month's tier books are pinned indirectly, as a deterministic function of the attested inputs (attestations/attestation_2026-09.json), the engine hash and the configuration hash recorded in the manifest's lineage, which a reader with the engine can regenerate. From 2026-10 every tier and treatment is a sealed row, checkable by anyone with the released key.",
+  "roster_changes": [
+   {
+    "date": "2026-09-30",
+    "effective": "2026-10",
+    "from": "1 row: unrestricted.fully_invested",
+    "to": "12 rows: {unrestricted, core, capacity} x {fully_invested, vol_managed_1.0, hedged_0.50, stacked}, the V1 roster shape. The traded row remains unrestricted.fully_invested; the eleven others are published-not-traded, as in V1.",
+    "reason": "The licensed product is the tiers. A tier book pinned only through attested inputs and a pinned engine can be checked only by re-running the engine under NDA; a sealed row is checkable by anyone with the released key. The one-row roster was a scoping decision in the first build of the V2 chain (register 245-247) carried into these terms; the operator reversed it on the go-live morning, after the 2026-09 manifest had been sealed under the one-row roster. Not applied retroactively: 2026-09 stands as sealed."
+   }
+  ]
  },
  "cadence": {
   "frequency": "monthly",
