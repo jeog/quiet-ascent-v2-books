@@ -1,0 +1,13 @@
+{
+  "aad": "QA-SEAL-2|<month>|<chain_index>|<id>",
+  "chain_index": 1,
+  "cipher": "AES-256-GCM",
+  "ct": "kTKoFzDmHjzk+Mt/lSm1tcmukykwunfn4V+BqDbbkUI9Fb4397hJnGpKP8a/zhLo7mBhErP7Ox1Tgwh+srico5MvAB4PiA2qn3CKlP42zyTvQK1C/CORh/ZpfOHIchm57bS59yDRvAdt5YNZ5wWe8l5elzYqgdiB0r/TCvaiuM68lZs3wh9ScEgV+j7w1jK7u2x0soL2G4S+WWOckteRB5fS0E8rzRQznxgErToMQ322brlAgeOrKw5DnwVlAxcNYCJwd/R2hqzc8sO1sVf2lpRPSupBN7mSfkMj52yil9icl5+pQAJImJmMVnfLTI6Zd5bSKTfuC8FyveqIcVrCg/nlLz+f4CtNbVMqrowzxg17+8NZWO24QvJTybXeBkBjtYOBVbcvI11SfQD27k+JtfZ4m5ZZEGQgtsrxk2GWrF6RNE1cFWhrApqabs+cBFYlLqFQ00l8K0+7Rbf/Uj8OznkshlN+v2EmAuhFnQiOGYS/KypaRDBVWVugYjPuu+v2N1PaBykosfCoCLdjbXLffl33wof5bww4CAyvIvwsOF25S0Al6Y5HlUY094z251cFba5i68/rYituWxfMCFPVgTmWXRPQPJyK/Ypay8KcgTjEeXQhJs8Xv5S2ufRc24ltVqF/ljYQDVvSNTNqMGO/w7CiPHCTdyOqSmH5ushUtQL4ziGbRFRpapPu0A9vDCXGXghdiVUUv3aMZxK2mYbB+boAyPBGxBO2BdXWlvPyibQwJhUSijqE28+kbX1emKphEdD/+Sj9Y3Db7IfnqDLtGa/q9v18+DIw3tdVxLYGDqm4fUm9JV2pNjH++wV2Z2ZCaPZPIDExwERjKsJZ6nJEWTbAmYo0uRIfDi6cxKiFjsVwO6RkxlJoediQ03fOznYBGvgaEKilTq3Xa1ds4hl+V+kzlt+Hs7pUMf3+EpzIovDwjOgVyhe4jkqhiyxbqX3eIX0g+TIcmXyB+rP68hVUhxEEQsUxL4QoVXgl0re4czb31yjgBq7mRvLGcShjlJiGWUohQS6jQZ/fsOpx1pfOPDsl94M17zO5OQ5DdJUiD76y3G8XJt6NU3M1Zz5uxGyoN88aNZby2MwCWWaeXsbd3g/fcnQAlyvLXIrrlhQmagH82rGDKz8LbMTuxW3yJe5+JS6mEraHvYyh4nbieR0WGI4TokMc4sI9pPyTA7UbB48AyowmObd73v1mWjds59aa5lOSlEbQ3UhAB2ZMYzRHiFEeA8/S4LYMTHiBhR9VJHCMyR/EWlKJM2Q3VvCQcgb2cn67b5ZvXp1L4n4geQft0ITVdrRZ6YBj/D1xK6i35Bop5AwELFuZRwp0mBgGPWHEq78ydHZkoYY3fT4cHa1EWGnHtyDZ5TrCTO6RWUR5ExajUhdudNVGkTogQhPzzhhf5J1+PH733kEKCdFMTVjvB116FzLj6rpagIPACcxrqkb8qYniMHtWVPGzbJnS/oaLSFSZzRHnYoGgO3OAjv5gFgkZaO8JIQ5wOSD+P7TOuiP820GErKN+yXkuVvL8TWktDXVgHKnmk2DaSzuW4B7jey9B+jzX+xu85GvobazyNo4JgOYJRMhFR9Ql4NTNnRPhE2/ggs55J5Ga93kzIRY9ONOMVzkABLuN6/l4NvMUnhqWW2yrzhOicd/NN7ahJx1G9392sNDssRZCBC3Px+CNO/WKF7fYyHFhVrX+waptBJXOuEn1dn80If8XQunO+hSKn0B2qA==",
+  "format": "QA-SEAL-2",
+  "id": "unrestricted.fully_invested",
+  "kdf": "HKDF-SHA256(K_m, info='QA-SEAL-2|<month>|<id>|key'); nonce info is 'QA-SEAL-2|<month>|<id>|nonce|<sha256 of plaintext>' -- a synthetic IV, so re-sealing the same book reproduces the ciphertext and a different book cannot reuse a nonce",
+  "month": "2026-09",
+  "nonce": "WF9D1sRe4tA4ayPZ",
+  "note": "Decrypt with the month key K_m released for this month, then check the recovered bytes against this manifest row's book_sha256. K_m itself is checked by hashing it forward chain_index times onto the published anchor.",
+  "plaintext_sha256": "b416bb74f3f1d4788656e2cd463b48b76ca63b9df95117740c24f7eded02e4e8"
+}
