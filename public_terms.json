@@ -55,22 +55,22 @@
    {
     "id": "capacity.fully_invested",
     "role": "published, not traded",
-    "execution_basis": "T..T+2 VWAP"
+    "execution_basis": "VWAP across every session from T to the one before the next decision date (19 to 23 sessions), 5% of ADV"
    },
    {
     "id": "capacity.vol_managed_1.0",
     "role": "published, not traded",
-    "execution_basis": "T..T+2 VWAP"
+    "execution_basis": "VWAP across every session from T to the one before the next decision date (19 to 23 sessions), 5% of ADV"
    },
    {
     "id": "capacity.hedged_0.50",
     "role": "published, not traded",
-    "execution_basis": "T..T+2 VWAP"
+    "execution_basis": "VWAP across every session from T to the one before the next decision date (19 to 23 sessions), 5% of ADV"
    },
    {
     "id": "capacity.stacked",
     "role": "published, not traded",
-    "execution_basis": "T..T+2 VWAP"
+    "execution_basis": "VWAP across every session from T to the one before the next decision date (19 to 23 sessions), 5% of ADV"
    }
   ],
   "licensed_tiers": "The core and capacity tiers are published in the V2 documents whose fingerprints sit in every manifest's lineage.documents_sha256. For 2026-09 they were not sealed rows: that month's tier books are pinned indirectly, as a deterministic function of the attested inputs, the engine hash and the configuration hash in the manifest's lineage. From 2026-10 every tier and treatment is a sealed row, checkable by anyone with the released key.",
@@ -107,5 +107,14 @@
   "the envelope: sealed_sha256 against the published .seal.json bytes"
  ],
  "what_requires_disclosure": "the book itself: released keys open the sealed rows, and the plaintext hashes to book_sha256",
- "not_in_this_file": "Universe definition, feature set, screen clauses, exit gates, sizing model parameters and ladder depth are deliberately absent. Nothing here reveals more than a published manifest already does."
+ "not_in_this_file": "Universe definition, feature set, screen clauses, exit gates, sizing model parameters and ladder depth are deliberately absent. Nothing here reveals more than a published manifest already does.",
+ "corrections": [
+  {
+   "date": "2026-10-01",
+   "what": "capacity rows' execution_basis",
+   "from": "T..T+2 VWAP",
+   "to": "VWAP across every session from T to the one before the next decision date (19 to 23 sessions), 5% of ADV",
+   "reason": "The text published at e1b56c2 was copied from V1's retired capacity construction. V2's capacity tier is the core book executed across the month, as its documents state. No month had been committed under the earlier text; 2026-10 is the first twelve-row month."
+  }
+ ]
 }
