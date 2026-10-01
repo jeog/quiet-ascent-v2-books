@@ -29,13 +29,16 @@ so the sequence cannot be rewritten.
 ## What is committed, and when
 
 Through 2026-09, one row: the traded book, `unrestricted.fully_invested`. From 2026-10, twelve rows,
-the V1 shape: the unrestricted, core and capacity books, each under the four treatments, with the
-traded row unchanged (`public_terms.json`, `roster.roster_changes`, dated 2026-09-30). A row is
-committed every month, run or not; a month that failed is still committed with `status: not-run`
-and a stated reason. The licensed tiers are published in the V2 documents, whose fingerprints are
-in every manifest's `lineage.documents_sha256`; for 2026-09 their books are pinned indirectly through
-the attested inputs and the engine hash in the lineage, and from 2026-10 they are sealed rows. Each manifest also carries the hashes of the configuration, the engine
-and the builders the month's book came from, and the append-only register's hash and byte length.
+the V1 shape: the unrestricted, core and capacity books, each under the four treatments
+(fully invested, vol-managed, hedged, stacked), with the traded row unchanged (`public_terms.json`,
+`roster.roster_changes`, dated 2026-09-30). Every row is sealed on its own: `sealed/<month>/<row id>.seal.json`,
+twelve envelopes a month from 2026-10, each named with its ciphertext hash in the manifest's `roster`.
+A row is committed every month, run or not; a month that failed is still committed with `status: not-run`
+and a stated reason. The licensed tiers are also published in the V2 documents, whose fingerprints are
+in every manifest's `lineage.documents_sha256`; for 2026-09 their books were pinned only indirectly, through
+the attested inputs and the engine hash in the lineage. Each manifest also carries the hashes of the
+configuration, the engine and the builders the month's book came from, and the append-only register's
+hash and byte length. Manifests from 2026-10 carry `schema: 2` for the twelve-row body.
 
 ## Sealed books: the anchor and the key chain
 

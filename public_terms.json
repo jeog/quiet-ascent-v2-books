@@ -9,16 +9,71 @@
   "account": "The account that executed the V1 record through 2026-08 converted to the V2 book at the 2026-09-30 close. V1's record continues on paper from 2026-09; its manifests say so."
  },
  "roster": {
-  "count": 1,
-  "fixed": "The roster is fixed. A change to the set is a roster change and is logged here, in roster_changes, and in the next manifest's roster_changes, with a date and reason. Through 2026-09 the roster is one row, the traded book. From 2026-10 it is twelve rows, the V1 shape: three books by four treatments (roster_changes[0]).",
+  "count": 12,
+  "fixed": "The roster is fixed. Every month commits all of these rows. A change to the set is a roster change and is logged here, in roster_changes, and in the next manifest's roster_changes, with a date and reason. Through 2026-09 the roster was one row, the traded book; from 2026-10 it is twelve rows, the V1 shape: three books by four treatments (roster_changes[0]).",
   "rows": [
    {
     "id": "unrestricted.fully_invested",
     "role": "traded",
-    "execution_basis": "T MOC; legs below two whole shares as dollar-based orders in the final minutes"
+    "execution_basis": "every leg a market order in the final half hour of the month-end session, sells before the buys they fund; the broker checks each buy against cash at entry"
+   },
+   {
+    "id": "unrestricted.vol_managed_1.0",
+    "role": "published, not traded",
+    "execution_basis": "every leg a market order in the final half hour of the month-end session, sells before the buys they fund; the broker checks each buy against cash at entry"
+   },
+   {
+    "id": "unrestricted.hedged_0.50",
+    "role": "published, not traded",
+    "execution_basis": "every leg a market order in the final half hour of the month-end session, sells before the buys they fund; the broker checks each buy against cash at entry"
+   },
+   {
+    "id": "unrestricted.stacked",
+    "role": "published, not traded",
+    "execution_basis": "every leg a market order in the final half hour of the month-end session, sells before the buys they fund; the broker checks each buy against cash at entry"
+   },
+   {
+    "id": "core.fully_invested",
+    "role": "published, not traded",
+    "execution_basis": "T VWAP (1 session)"
+   },
+   {
+    "id": "core.vol_managed_1.0",
+    "role": "published, not traded",
+    "execution_basis": "T VWAP (1 session)"
+   },
+   {
+    "id": "core.hedged_0.50",
+    "role": "published, not traded",
+    "execution_basis": "T VWAP (1 session)"
+   },
+   {
+    "id": "core.stacked",
+    "role": "published, not traded",
+    "execution_basis": "T VWAP (1 session)"
+   },
+   {
+    "id": "capacity.fully_invested",
+    "role": "published, not traded",
+    "execution_basis": "T..T+2 VWAP"
+   },
+   {
+    "id": "capacity.vol_managed_1.0",
+    "role": "published, not traded",
+    "execution_basis": "T..T+2 VWAP"
+   },
+   {
+    "id": "capacity.hedged_0.50",
+    "role": "published, not traded",
+    "execution_basis": "T..T+2 VWAP"
+   },
+   {
+    "id": "capacity.stacked",
+    "role": "published, not traded",
+    "execution_basis": "T..T+2 VWAP"
    }
   ],
-  "licensed_tiers": "The core and high-capacity tiers are published in the V2 documents whose fingerprints sit in every manifest's lineage.documents_sha256. For 2026-09 they are not sealed rows: that month's tier books are pinned indirectly, as a deterministic function of the attested inputs (attestations/attestation_2026-09.json), the engine hash and the configuration hash recorded in the manifest's lineage, which a reader with the engine can regenerate. From 2026-10 every tier and treatment is a sealed row, checkable by anyone with the released key.",
+  "licensed_tiers": "The core and capacity tiers are published in the V2 documents whose fingerprints sit in every manifest's lineage.documents_sha256. For 2026-09 they were not sealed rows: that month's tier books are pinned indirectly, as a deterministic function of the attested inputs, the engine hash and the configuration hash in the manifest's lineage. From 2026-10 every tier and treatment is a sealed row, checkable by anyone with the released key.",
   "roster_changes": [
    {
     "date": "2026-09-30",
@@ -27,12 +82,15 @@
     "to": "12 rows: {unrestricted, core, capacity} x {fully_invested, vol_managed_1.0, hedged_0.50, stacked}, the V1 roster shape. The traded row remains unrestricted.fully_invested; the eleven others are published-not-traded, as in V1.",
     "reason": "The licensed product is the tiers. A tier book pinned only through attested inputs and a pinned engine can be checked only by re-running the engine under NDA; a sealed row is checkable by anyone with the released key. The one-row roster was a scoping decision in the first build of the V2 chain (register 245-247) carried into these terms; the operator reversed it on the go-live morning, after the 2026-09 manifest had been sealed under the one-row roster. Not applied retroactively: 2026-09 stands as sealed."
    }
-  ]
+  ],
+  "traded_row": "unrestricted.fully_invested",
+  "rows_note": "Each sealed row carries the book's long weights, its short leg (hedged and stacked rows: RSP and IWM in the book's own blend at half the exposure scale), the cap residual, the cash the overlay took off, and the exposure scale applied. The vol-managed and stacked rows scale the whole package by that month's exposure scale, which is formed from the book's own raw return history and snapped to a declared rung."
  },
  "cadence": {
   "frequency": "monthly",
   "book_fixed_at": "the stamp session, one or more sessions BEFORE the month end; recorded per manifest as stamp_date",
-  "traded_at": "the month-end session, market-on-close"
+  "traded_at": "the month-end session; every leg a market order in the final half hour, sells before the buys they fund, because the broker checks each buy against cash available at entry and does not count a pending sell (from 2026-09-30; 2026-09's manifest carries the earlier market-on-close literal)",
+  "traded_how": "whole-share legs as market orders; legs that size to fewer than three whole shares as fractional-quantity sells and dollar-based buys; non-closing legs under a declared notional threshold may be left unentered and are disclosed in the month's register entry"
  },
  "disclosure": {
   "sealed": "Every committed book is sealed (AES-256-GCM) and its ciphertext is published with the manifest, so the book is fixed and handed over before its outcome is known.",
