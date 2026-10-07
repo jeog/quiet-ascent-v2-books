@@ -31,7 +31,10 @@ so the sequence cannot be rewritten.
 Through 2026-09, one row: the traded book, `unrestricted.fully_invested`. From 2026-10, twelve rows,
 the V1 shape: the unrestricted, core and capacity books, each under the four treatments
 (fully invested, vol-managed, hedged, stacked), with the traded row unchanged (`public_terms.json`,
-`roster.roster_changes`, dated 2026-09-30). Every row is sealed on its own: `sealed/<month>/<row id>.seal.json`,
+`roster.roster_changes`, dated 2026-09-30). The hedged and stacked rows are `hedged_conc` and `stacked_conc`:
+a concentration-scaled RSP/IWM short, sized each month to the book's top-sector weight and blended to its own
+cap profile (`roster_changes[1]`, dated 2026-10-07, before any twelve-row month was sealed; the rule and its
+constants are in `roster.rows_note`). Every row is sealed on its own: `sealed/<month>/<row id>.seal.json`,
 twelve envelopes a month from 2026-10, each named with its ciphertext hash in the manifest's `roster`.
 A row is committed every month, run or not; a month that failed is still committed with `status: not-run`
 and a stated reason. The licensed tiers are also published in the V2 documents, whose fingerprints are
