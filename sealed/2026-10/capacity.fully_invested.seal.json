@@ -1,0 +1,13 @@
+{
+  "aad": "QA-SEAL-2|<month>|<chain_index>|<id>",
+  "chain_index": 2,
+  "cipher": "AES-256-GCM",
+  "ct": "Za9l99vBWLOFWh8pi49+fhmJvsxNDdqOeWyx07hJ19lLS3chDXRJ3/QiI6QLI9XIrVZyZmUBHIhc39YFkvEiLJM1gA/EkEFMCY+uBgj5F2tRtF5VsPcKWOFsvH0dHs+tbBF/9WtnJYDodV/hABQjyWF8CGrEysYZ6TJaaZMJ1E15RpESCQRkdc6jA9zFAyruvB6RfeOI2ZJ0bbYKvlNaiMcRBZ9+B2CfnHXMK5d3nxgO5zGzpTBjdgUIdKBWnA2qbF6/vJDXo5hSJkJNjnMpT7RA0PO9Er2rWnsWgwemP1PB5seVZIQmZl83i1cqh8Y180LIs/CfADGkvc+bbVZqixXKXQBTP7uNPjMU4jXix6pAq9TnTiNSKKvaV0KsRJHfN3z/egVolzpkv1KbsYjAv/HNY+Kvfb+DzSuHKQeVIPgD+UVJU4+uXGRriEq8MOL55evW5eeCtzQSt+JPpTvxeZJgqY3Cyey5Z/koGZgX0WYdQLfpyziYsnjzwQ1ndqraWrAFtl3NjuCESDk4MHcgLOLxSU8IDOgohm8+CMlM5rDJRE0BdvsUD3tiC/XvUlLM8r4+abArRKvIeZVWotX2mfIqUjZ/4MHneJTUuntFHnlyEm5WCl9yr8bUyUkonsUSowMb0B5Wv7ZYl8g0WyoxfzEF9u7kpGvAgEuZSjJ8slhpUKVTgRD4PIbEQutmf9/mbbDP7B4QNV19c7D0HfaTbQmh/HzIMgpbH0twdKjvya5G+XL0HtJxIeXD215vo2RbP3UCfN/Mw6puQ6GH1h+ujkW3LzaJxXoxftxW+VoIi0nc5BpSTSrXBVTRSTD1Wm6W3pwSvna8kA0d22ttYhl+EtzMD8jq24DgBv7gE4MFJkR76Dnfg0uB4nKt2Hu0WRfPTyLQEyMI/BBIQRVyn1v38zGSwC0SOp4IHjFQQWSlaHNoxER7QgRcHaaC2H/1O+u+TjOxYKQnPfBj/sZ5h+7T/v9A1xP8AdPWKxvASiKmsnoOFnSIGvGSaZwesqNHFoIlvupyKnv01J0we1c0dOaog7KkWVmIyvZKzsYupww7L26RSzwxYuLD0gvLlcoxyC55NxL32A9/ULR39jcD9a2U3xNb5MvAJBi6xW3H0n9ftPNHEqpjvXsr7ohMiqms+PNNbFuvrhJnndbPGCejikuMelwhaFIOhd7Vu+AJ5UY5ujR0lG7nOx4FEuw88iAwOk4CF2vcIXZt8PSq2BfImjxR7Se+na0+n4HmpathuoTbu++Md9V9Shnyii954VLUMqUpOsfL1xrMPSxlDTk8XYcHef+C21KrN+dnKL+Cld2rzrq9sbPqJBrbZyStNv8cTcH/hNKRBYxjg5yVbb2vvvccH+O4VSbxYZ84bWKl4zqLZ2WO9HrEU5+Y1bL7ImZ23FMcTAPwdYFIhpwBCMU167RIcbPN/QOT/HPMyVA2NLBd26NLys9f8K8URVSyczRW0v/WgmGl3PJ0dKDqxhVe8FchCrwfAEcewvQUDSDDfAUjBcQUUL7dauypeqjIcsvysTXGYjGw766pdaYQMHIASbTvy0Z6i9fCwSnOXitnU6bIz3btIuHPLCJIbnMlcaCQ/4+jrmbUk44MMupnTEomGEH8ikG6gdCt0fZiEQsxufl+peGi2EWW+dOvoKNTxgDDN3+oezYJIezMD9PO7DO2sTHs/XxvcniSZq8H+1tvVqvasZEvx+ib+B2TdU9OBWO81anCve3xI+vEEnACIIEl2M3z1TuOQrjTN6dYkDd7dG+kMqola9hCIlxePCb7o6aG9Z8vkB74xZnizj0v3Tj5gCJjX961lgXFauE/cHf0F7zzCiwCuR9EwKO4/q6c9OvhoGhUE2x4ALA2akYxgmc=",
+  "format": "QA-SEAL-2",
+  "id": "capacity.fully_invested",
+  "kdf": "HKDF-SHA256(K_m, info='QA-SEAL-2|<month>|<id>|key'); nonce info is 'QA-SEAL-2|<month>|<id>|nonce|<sha256 of plaintext>' -- a synthetic IV, so re-sealing the same book reproduces the ciphertext and a different book cannot reuse a nonce",
+  "month": "2026-10",
+  "nonce": "fDBzlaDdZguJUbYh",
+  "note": "Decrypt with the month key K_m released for this month, then check the recovered bytes against this manifest row's book_sha256. K_m itself is checked by hashing it forward chain_index times onto the published anchor.",
+  "plaintext_sha256": "1cdc9af283d3bfde290716e0b0b4a079291886f2301306ea90709d5b05cde367"
+}
